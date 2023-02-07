@@ -1,5 +1,6 @@
 # Top Tricky SQL Interview problems 
 
+![Alternate image text](https://s3.studytonight.com/curious/uploads/pictures/1633766005-112478.jpg)
 
 #### 🔥 Top Interview SQL Questions based on SQL Joins, Where Condition, Group By, Subqueries, Self Joins, Window Functions, Correlated Subqueries, Time Series, String Manipulation, and Aggregate Functions 🔥
 
