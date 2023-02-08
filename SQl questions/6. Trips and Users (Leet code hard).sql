@@ -39,6 +39,8 @@ On 2013-10-03:
   - The Cancellation Rate is (1 / 2) = 0.50
 */
 
+--Code : 
+
 with t1 as (
 select request_at,
        count(case when role = 'client' then 1 else null end) total_requests,
