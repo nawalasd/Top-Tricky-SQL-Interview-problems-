@@ -11,4 +11,10 @@
 - Enhance your SQL knowledge, skills, and confidence in technical interviews 💪
 - Get ready to impress in your next SQL interview with this repository on top interview SQL questions! 
 
+---
+
+## Let's connect on : 
+- [LinkedIn](https://www.linkedin.com/in/nawalambavkar/)
+- [Medium](https://medium.com/@nawal.ambavkar)
+- [Twitter](https://twitter.com/Nawalamb)
 
