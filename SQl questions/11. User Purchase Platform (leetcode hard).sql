@@ -54,45 +54,40 @@ On 2019-07-02, user 2 purchased using mobile only, user 3 purchased using deskto
 */
 --Code : 
 
--- Find users who did only have any one platform
-
+-- Find users who did purchased through one platform only
 with t1 as (
-select   spend_date,
-         max(platform) as platform,
-         count(distinct user_id)total_users,
-         sum(amount) total_amount 
-from     spending
+select spend_date,
+       max(platform) as platform,
+	   sum(amount) total_amount,
+	   count(distinct user_id) as total_users
+from spending 
 group by user_id,spend_date
-having count(distinct platform) = 1
+having count(distinct platform) <2
+union all
+-- -- Find users who did purchased through both platform
+select spend_date,
+       'both' as platform,
+	   sum(amount) total_amount,
+	   count(distinct user_id) as total_users
+from spending 
+group by user_id,spend_date
+having count(distinct platform) = 2
+-- Creating dummy record for edge case (where platform both is not there)
 union all
 select spend_date,
        'both' as platform,
-       count(distinct user_id)total_users,
-       sum(amount)  total_amount 
-from   spending
-group by user_id,spend_date
-having count(distinct platform) = 2
--- Inserting dummy record
-union all
-select spend_date , 'both' as platform, null  as total_users, 0 as total_amount
-from spending
-group by spend_date,user_id
+	   0 as total_amount,
+	   null  as total_users
+from spending 
 )
-select *
+select spend_date,
+       platform,
+	   sum(total_amount),
+	   count(distinct total_users)
 from t1
+group by 1,2
+order by spend_date,platform desc
 
-
-
-
-
-
--- select spend_date,
---        platform,
--- 	   count(distinct total_users),
--- 	   sum(total_amount)
--- from t1
--- group by spend_date,platform
--- order by spend_date,platform desc
 
 
 
